@@ -1,0 +1,31 @@
+# --- Secretos: NUNCA subir ---
+prod.keys
+*.keys
+title.keys
+.switch/
+
+# --- Datos de Pokémon reales (sólo se versionan ejemplos marcados) ---
+pk3/*.pk3
+pk3/*.ek3
+!pk3/ejemplos/*.pk3
+recibido*.pk3
+pk3/recibido/
+
+# --- Dependencias externas (se clonan, no se versionan) ---
+vendor/
+frlg-ldn-trade/
+venv/
+.venv/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# --- Volcados locales de diagnostico (contienen redes del vecindario) ---
+resultado_wifi.txt
+*~
+
+# --- Sistema ---
+.DS_Store
+Thumbs.db

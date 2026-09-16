@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comunicación Pokémon</title>
+<link rel="stylesheet" href="estilo.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23e3350d'/><path d='M2 16h28' stroke='%23111' stroke-width='3'/><circle cx='16' cy='16' r='5' fill='%23fff' stroke='%23111' stroke-width='3'/></svg>">
+</head>
+<body>
+
+<header>
+  <div class="titulo">
+    <h1>Comunicación <b>Pokémon</b></h1>
+    <span>PC → Rojo Fuego en la Switch, por intercambio real</span>
+  </div>
+  <div class="pastillas" id="pastillas"></div>
+  <nav>
+    <button data-pestana="crear" class="activa">Crear</button>
+    <button data-pestana="caja">Caja</button>
+    <button data-pestana="intercambio">Intercambio</button>
+    <button data-pestana="sistema">Sistema</button>
+  </nav>
+</header>
+
+<main>
+
+<!-- ══════════════════════════ CREAR ══════════════════════════ -->
+<section id="crear">
+  <div class="dos-columnas">
+    <div>
+      <div class="tarjeta">
+        <h2>Identidad</h2>
+        <div class="campos">
+          <div>
+            <label for="especie">Especie</label>
+            <select id="especie"></select>
+          </div>
+          <div>
+            <label for="mote">Mote <small>(10)</small></label>
+            <input id="mote" maxlength="10" placeholder="el de la especie">
+          </div>
+          <div>
+            <label for="ot">Entrenador original <small>(7)</small></label>
+            <input id="ot" maxlength="7" value="EMU">
+          </div>
+          <div>
+            <label for="otid">ID del entrenador</label>
+            <input id="otid" placeholder="aleatorio" autocomplete="off">
+          </div>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <h2>Características</h2>
+        <div class="campos">
+          <div>
+            <label for="nivel">Nivel</label>
+            <input id="nivel" type="number" min="1" max="100" value="5">
+          </div>
+          <div>
+            <label for="naturaleza">Naturaleza</label>
+            <select id="naturaleza"></select>
+          </div>
+          <div>
+            <label for="habilidad">Habilidad</label>
+            <select id="habilidad">
+              <option value="0">Primera</option>
+              <option value="1">Segunda</option>
+            </select>
+          </div>
+          <div>
+            <label for="amistad">Amistad</label>
+            <input id="amistad" type="number" min="0" max="255" value="70">
+          </div>
+          <div class="linea-check">
+            <input id="shiny" type="checkbox">
+            <label for="shiny">✨ Shiny (variocolor)</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <h2>Objeto y movimientos</h2>
+        <div class="campos">
+          <div>
+            <label for="objeto">Objeto equipado</label>
+            <select id="objeto"></select>
+          </div>
+          <div>
+            <label for="mov1">Movimiento 1</label>
+            <select id="mov1"></select>
+          </div>
+          <div>
+            <label for="mov2">Movimiento 2</label>
+            <select id="mov2"></select>
+          </div>
+          <div>
+            <label for="mov3">Movimiento 3</label>
+            <select id="mov3"></select>
+          </div>
+          <div>
+            <label for="mov4">Movimiento 4</label>
+            <select id="mov4"></select>
+          </div>
+        </div>
+        <p class="ayuda">Los movimientos van agrupados por tipo y los objetos por
+          categoría — las MT dicen qué enseñan. Son los 354 movimientos y los 310
+          objetos de Rojo Fuego, con su número interno.</p>
+      </div>
+
+      <div class="tarjeta">
+        <h2>IVs <small>— genes, 0 a 31</small></h2>
+        <div class="seis" id="ivs"></div>
+        <div class="fila-botones">
+          <button class="accion pequena" data-ivs="31">Todo 31</button>
+          <button class="accion pequena" data-ivs="azar">Aleatorios</button>
+          <button class="accion pequena" data-ivs="0">Todo 0</button>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <h2>EVs <small>— esfuerzo, máximo 510 en total y 255 por estadística</small></h2>
+        <div class="seis" id="evs"></div>
+        <div class="fila-botones">
+          <span id="suma-evs" class="ayuda">suma 0 / 510</span>
+          <button class="accion pequena" data-evs="0">Poner a cero</button>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <h2>Avanzado</h2>
+        <div class="campos">
+          <div>
+            <label for="fateful">Encuentro especial <small>(fateful)</small></label>
+            <select id="fateful">
+              <option value="auto">Automático (sí en Mew y Deoxys)</option>
+              <option value="si">Forzar sí</option>
+              <option value="no">Forzar no</option>
+            </select>
+          </div>
+          <div>
+            <label for="semilla">Semilla</label>
+            <div style="display:flex;gap:6px">
+              <input id="semilla" autocomplete="off">
+              <button class="accion pequena" id="btn-semilla" title="Otra semilla">🎲</button>
+            </div>
+          </div>
+        </div>
+        <p class="ayuda">La semilla fija el PID: con la misma semilla sale el mismo
+          Pokémon, byte a byte. El bit <em>fateful</em> es lo que permite intercambiar
+          Mew y Deoxys; sin él, el juego los rechaza.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="tarjeta pegajosa">
+        <h2>Vista previa</h2>
+        <div id="previa"></div>
+        <div class="campos" style="margin-top:16px">
+          <div>
+            <label for="fichero">Guardar como</label>
+            <input id="fichero" placeholder="bulbasaur.pk3">
+          </div>
+          <div class="linea-check">
+            <input id="sobrescribir" type="checkbox">
+            <label for="sobrescribir">Sobrescribir</label>
+          </div>
+        </div>
+        <div class="fila-botones">
+          <button class="accion principal" id="btn-crear">Generar .pk3</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ CAJA ══════════════════════════ -->
+<section id="caja" hidden>
+  <div class="tarjeta">
+    <h2>Caja — todo lo que hay en <code>pk3/</code></h2>
+    <div class="fila-botones">
+      <input id="filtro" placeholder="filtrar por nombre, especie, mote…" style="max-width:320px">
+      <button class="accion" id="btn-recargar-caja">Recargar</button>
+      <span class="ayuda" id="resumen-caja"></span>
+    </div>
+  </div>
+  <div class="rejilla-caja" id="rejilla-caja"></div>
+</section>
+
+<!-- ══════════════════════════ INTERCAMBIO ══════════════════════════ -->
+<section id="intercambio" hidden>
+  <div class="dos-columnas">
+    <div>
+      <div class="tarjeta">
+        <h2>Antes de lanzar</h2>
+        <ul class="checklist" id="checklist"></ul>
+      </div>
+
+      <div class="tarjeta">
+        <h2>Qué se envía</h2>
+        <div class="campos">
+          <div>
+            <label for="sel-relleno">Relleno <small>(hueco 1, no se entrega)</small></label>
+            <select id="sel-relleno"></select>
+          </div>
+          <div>
+            <label for="sel-enviar">Se entrega <small>(hueco 2)</small></label>
+            <select id="sel-enviar"></select>
+          </div>
+          <div>
+            <label for="sel-salida">Recibido en <small>(vacío = automático)</small></label>
+            <input id="sel-salida" placeholder="pk3/recibido/recibido-FECHA.pk3">
+          </div>
+        </div>
+        <div class="campos" style="margin-top:12px">
+          <div>
+            <label for="sel-version">Tu juego</label>
+            <select id="sel-version">
+              <option value="firered">Rojo Fuego</option>
+              <option value="leafgreen">Verde Hoja</option>
+            </select>
+          </div>
+          <div>
+            <label for="sel-ot">Nombre del emulador</label>
+            <input id="sel-ot" value="EMU" maxlength="7">
+          </div>
+          <div>
+            <label for="sel-phy">Radio</label>
+            <select id="sel-phy"></select>
+          </div>
+          <div>
+            <label for="sel-trades">Intercambios seguidos</label>
+            <input id="sel-trades" type="number" min="1" max="6" value="1">
+          </div>
+        </div>
+        <div class="fila-botones">
+          <button class="accion principal" id="btn-lanzar">Lanzar intercambio</button>
+          <button class="accion peligro" id="btn-parar" disabled>Parar</button>
+          <span class="ayuda" id="estado-intercambio"></span>
+        </div>
+        <p class="ayuda">Puede hacer falta más de un intento para conectar: lo avisa el
+          propio proyecto. Si el primero falla, repite antes de dar nada por roto.</p>
+      </div>
+
+      <div class="tarjeta">
+        <h2>En la Switch</h2>
+        <ol class="pasos">
+          <li>Centro Pokémon → <b>Direct Corner</b> → Trade Center → crear sala como <b>LEADER</b>.</li>
+          <li>Espera a que aparezca <b>EMU</b> y acepta su entrada.</li>
+          <li>Camina hasta la <b>silla izquierda</b>.</li>
+          <li>Elige el Pokémon que entregas y acepta.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div>
+      <div class="tarjeta">
+        <h2>Registro <small id="ruta-log"></small></h2>
+        <div class="consola" id="consola">Sin lanzar todavía.</div>
+        <div class="fila-botones">
+          <label class="linea-check" style="margin:0">
+            <input type="checkbox" id="autoscroll" checked> <span style="font-size:13px">Seguir el final</span>
+          </label>
+        </div>
+        <p class="ayuda">Las MAC y el SSID de la sesión salen censurados: el
+          registro se guarda para poder subirlo. Con <code>--sin-censura</code>
+          se ven enteros.</p>
+      </div>
+      <div class="tarjeta" id="tarjeta-recibido" hidden>
+        <h2>Lo que ha llegado</h2>
+        <div id="recibido"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ SISTEMA ══════════════════════════ -->
+<section id="sistema" hidden>
+  <div class="dos-columnas">
+    <div>
+      <div class="tarjeta">
+        <h2>Estado</h2>
+        <dl class="datos" id="datos-sistema"></dl>
+        <div class="fila-botones">
+          <button class="accion" id="btn-recargar-estado">Recargar</button>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <h2>Radio Wi-Fi</h2>
+        <p class="ayuda">LDN necesita la tarjeta para él solo. Con cable Ethernet usa la
+          opción A y conservas Internet; si el escaneo no ve nada, prueba la B.</p>
+        <div class="campos" style="margin-top:10px">
+          <div>
+            <label for="sel-wifi">Interfaz</label>
+            <select id="sel-wifi"></select>
+          </div>
+        </div>
+        <div class="fila-botones">
+          <button class="accion" data-radio="liberar_wifi">A — Soltar la Wi-Fi</button>
+          <button class="accion" data-radio="restaurar_wifi">A — Devolverla</button>
+        </div>
+        <div class="fila-botones">
+          <button class="accion" data-radio="parar_nm">B — Parar NetworkManager</button>
+          <button class="accion" data-radio="arrancar_nm">B — Arrancarlo</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="tarjeta">
+        <h2>Encendido y apagado</h2>
+        <p class="ayuda">Apagar un Ubuntu live a lo bruto se come la persistencia del
+          pendrive: lo pendiente de escribir no llega al disco.
+          <code>apagar.sh</code> sincroniza primero y se salta la pantalla de
+          «retira el medio de instalación» que deja el portátil colgado.</p>
+        <div class="fila-botones">
+          <button class="accion" data-sistema="sync">Sincronizar discos</button>
+          <button class="accion peligro" data-sistema="reiniciar">Reiniciar</button>
+          <button class="accion peligro" data-sistema="apagar">Apagar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div id="avisos"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+#
+# Corta el commit si en las lineas NUEVAS se cuela una MAC real, el nombre de
+# una red del vecindario o un fichero de claves. Mira solo lo que se anade, no
+# lo que ya estaba: el volcado de salidas/inyeccion.txt usa BSSID sinteticos
+# del rango 02:00:00:00:00:NN y no debe saltar.
+#
+# Instalarlo:   git config core.hooksPath scripts/hooks
+# Saltarselo:   git commit --no-verify   (piensatelo dos veces)
+
+set -uo pipefail
+
+MAC='([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}'
+REDES='MOVISTAR|Livebox|DIGIFIBRA|MiFibra|MIWIFI|Tapo_Cam|vodafone|Orange-|WLAN_|devolo'
+
+rojo=$'\033[31m'; fin=$'\033[0m'
+fallo=0
+
+quejarse() {
+    printf '%s[pre-commit] %s%s\n' "$rojo" "$1" "$fin" >&2
+    fallo=1
+}
+
+# El propio hook queda fuera del barrido: lleva la lista de patrones dentro
+# y si no, se mordia la cola.
+anadidas=$(git diff --cached -U0 --diff-filter=ACM -- . ':(exclude)scripts/hooks/' \
+           | grep '^+' | grep -v '^+++' || true)
+
+macs=$(printf '%s' "$anadidas" | grep -oE "$MAC" | grep -v '^02:00:00:00:00:' | sort -u || true)
+[ -n "$macs" ] && quejarse "MAC real en las lineas nuevas:" && printf '  %s\n' $macs >&2
+
+redes=$(printf '%s' "$anadidas" | grep -oEi "$REDES" | sort -u || true)
+[ -n "$redes" ] && quejarse "nombre de red del vecindario en las lineas nuevas:" && printf '  %s\n' $redes >&2
+
+claves=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.keys$|^\.switch/' || true)
+[ -n "$claves" ] && quejarse "fichero de claves en el commit:" && printf '  %s\n' $claves >&2
+
+if [ "$fallo" -ne 0 ]; then
+    printf '%sCommit abortado. Censuralo o usa --no-verify si sabes lo que haces.%s\n' "$rojo" "$fin" >&2
+    exit 1
+fi
+exit 0

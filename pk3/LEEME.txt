@@ -1,0 +1,4 @@
+Los archivos .pk3/.ek3 no se versionan (ver .gitignore).
+Hacen falta al menos 2 para el primer intercambio:
+  dummy.pk3   relleno para la party del jugador simulado
+  enviar.pk3  el Pokemon que quieres pasar a la Switch

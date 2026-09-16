@@ -1,0 +1,126 @@
+
+[1m==> Dependencias del sistema[0m
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Ign:1 file:/cdrom resolute InRelease
+Des:2 file:/cdrom resolute Release [664 B]
+Des:2 file:/cdrom resolute Release [664 B]
+Obj:4 http://security.ubuntu.com/ubuntu resolute-security InRelease
+Obj:5 http://archive.ubuntu.com/ubuntu resolute InRelease
+Obj:6 https://downloads.claude.ai/claude-desktop/apt/stable stable InRelease
+Obj:7 http://archive.ubuntu.com/ubuntu resolute-updates InRelease
+Obj:8 http://archive.ubuntu.com/ubuntu resolute-backports InRelease
+Leyendo lista de paquetes...
+Creando árbol de dependencias...
+Leyendo la información del estado...
+Se pueden actualizar 66 paquetes. Ejecute «apt list --upgradable» para verlos.
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Leyendo lista de paquetes...
+Creando árbol de dependencias...
+Leyendo la información del estado...
+git ya está en su versión más reciente (1:2.53.0-1ubuntu1).
+python3 ya está en su versión más reciente (3.14.3-0ubuntu2).
+python3-venv ya está en su versión más reciente (3.14.3-0ubuntu2).
+python3-pip ya está en su versión más reciente (25.1.1+dfsg-1ubuntu2).
+iw ya está en su versión más reciente (6.17-1).
+pciutils ya está en su versión más reciente (1:3.14.0-1build2).
+Resolviendo dependencias...
+Resumen:
+  Actualizando: 0, Instalando 0, Eliminando: 0, no actualizando: 66
+  [32m[ OK ][0m paquetes instalados
+  [32m[ OK ][0m Python 3.14
+
+[1m==> frlg-ldn-trade[0m
+Ya está actualizado.
+  [32m[ OK ][0m actualizado en /home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade
+
+[1m==> Entorno virtual[0m
+Requirement already satisfied: pip in ./vendor/frlg-ldn-trade/venv/lib/python3.14/site-packages (26.2.1)
+Requirement already satisfied: ldn==0.0.17 in ./vendor/frlg-ldn-trade/venv/lib/python3.14/site-packages (from -r /home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade/requirements.txt (line 2)) (0.0.17)
+Requirement already satisfied: pycryptodome==3.23.0 in ./vendor/frlg-ldn-trade/venv/lib/python3.14/site-packages (from -r /home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade/requirements.txt (line 3)) (3.23.0)
+Requirement already satisfied: trio==0.33.0 in ./vendor/frlg-ldn-trade/venv/lib/python3.14/site-packages (from -r /home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade/requirements.txt (line 4)) (0.33.0)
+Requirement already satisfied: zstandard==0.25.0 in ./vendor/frlg-ldn-trade/venv/lib/python3.14/site-packages (from -r /home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade/requirements.txt (line 5)) (0.25.0)
+Requirement already satisfied: python-netlink==0.0.15 in ./vendor/frlg-ldn-trade/venv/lib/python3.14/site-packages (from ldn==0.0.17->-r /home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade/requirements.txt (line 2)) (0.0.15)
+Requirement already satisfied: attrs>=23.2.0 in ./vendor/frlg-ldn-trade/venv/lib/python3.14/site-packages (from trio==0.33.0->-r /home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade/requirements.txt (line 4)) (26.1.0)
+Requirement already satisfied: sortedcontainers in ./vendor/frlg-ldn-trade/venv/lib/python3.14/site-packages (from trio==0.33.0->-r /home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade/requirements.txt (line 4)) (2.4.0)
+Requirement already satisfied: idna in ./vendor/frlg-ldn-trade/venv/lib/python3.14/site-packages (from trio==0.33.0->-r /home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade/requirements.txt (line 4)) (3.19)
+Requirement already satisfied: outcome in ./vendor/frlg-ldn-trade/venv/lib/python3.14/site-packages (from trio==0.33.0->-r /home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade/requirements.txt (line 4)) (1.3.0.post0)
+Requirement already satisfied: sniffio>=1.3.0 in ./vendor/frlg-ldn-trade/venv/lib/python3.14/site-packages (from trio==0.33.0->-r /home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade/requirements.txt (line 4)) (1.3.1)
+  [32m[ OK ][0m dependencias instaladas
+
+[1m==> Comprobando los modulos[0m
+  [32m[ OK ][0m ldn, pycryptodome, trio y zstandard importan correctamente
+
+[1m==> prod.keys[0m
+  [32m[ OK ][0m encontradas en /home/ubuntu/.switch/prod.keys
+
+[1m=== Fichero ===[0m
+  [32m[ OK  ][0m /home/ubuntu/.switch/prod.keys
+  [2m171 bytes[0m
+  [32m[ OK  ][0m permisos 600
+
+[1m=== Parseo (reglas de ldn.load_keys) ===[0m
+  [32m[ OK  ][0m las 3 linea(s) con contenido parsean sin problemas
+
+[1m=== Claves necesarias ===[0m
+  [32m[ OK  ][0m aes_kek_generation_source  (16 bytes)
+  [32m[ OK  ][0m aes_key_generation_source  (16 bytes)
+
+[1m=== Master key ===[0m
+  [2mload_keys usa master_key_00 para el protocolo LDN v1 y master_key_12[0m
+  [2mpara el v3. Con uno basta para arrancar, pero tener los dos evita[0m
+  [2mquedarse tirado si la sesion negocia la otra version.[0m
+  [32m[ OK  ][0m master_key_00  (16 bytes)
+  [33m[ ??  ][0m solo tienes master_key_00; falta master_key_12 (protocolo v3)
+
+[1m=== Veredicto ===[0m
+  [33mSIRVE, con 1 aviso(s).[0m
+
+  [2mOjo: esto valida el FORMATO, no que los valores sean los buenos.
+  Si algun valor fuera incorrecto no habria error al cargar: fallaria
+  el descifrado y la Switch simplemente no responderia.[0m
+
+[1m==> Archivos .pk3[0m
+  [32m[ OK ][0m 2 archivo(s) en pk3/
+
+[1m==> Listo[0m
+
+  Lee primero el README de frlg-ldn-trade (puede haber cambiado desde que
+  se escribio el blueprint):
+
+      less /home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade/README.md
+
+  Secuencia del primer intercambio:
+
+    1. En la Switch: Rojo Fuego -> Centro Pokemon -> Direct Corner
+       -> Trade Center -> crear la sesion como LEADER.
+
+    2. En el PC, liberar la tarjeta Wi-Fi:
+         sudo systemctl stop NetworkManager
+
+    3. Lanzar (ajusta las rutas de los .pk3):
+         cd /home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade
+         sudo -E ./venv/bin/python frlgtrade.py --live \
+             -o /home/ubuntu/Comunicacion_Pokemon/pk3/recibido.pk3 \
+             /home/ubuntu/Comunicacion_Pokemon/pk3/ejemplos/dummy.pk3 \
+             /home/ubuntu/Comunicacion_Pokemon/pk3/ejemplos/enviar.pk3
+
+       Opciones utiles:
+         --verbose            mas detalle, imprescindible si algo falla
+         --phy phy1           elegir otra radio si tienes varias
+         --keys RUTA          prod.keys fuera de ~/.switch/
+
+    4. En la Switch debe aparecer el jugador "EMU". Acepta su entrada.
+
+    5. Entra a la sala, ve a la SILLA IZQUIERDA, elige el Pokemon y
+       acepta el intercambio.
+
+    6. Al terminar:
+         sudo systemctl start NetworkManager
+
+  Puede hacer falta mas de un intento para que conecte. El propio README
+  del proyecto lo advierte, asi que no te alarmes al primer fallo.
+

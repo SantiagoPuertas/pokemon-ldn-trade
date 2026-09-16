@@ -1,0 +1,160 @@
+[    0.0s] [live] scanning for FRLG LDN network (nickname=EMU)...
+[    0.0s] [live] freed radio: brought wlp8s0 (phy0) down
+[    1.4s] [live] saw network comm_id=0x01006fa0233f8000 scene=22287 1/6 accept_policy=0
+[    1.4s] [live] no comm-id match; using the only joinable network (comm_id=0x01006fa0233f8000)
+[    1.4s] [live] beacon application_data (122 B): 005c160058000000000000000000000000000000000101000000080153616e746961676f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000333255416029303534764837616b3a232323232348484c7824332e602423
+[    1.4s] [live] beacon RFU payload (after the 0x5C Pia header, 30 B): 333255416029303534764837616b3a232323232348484c7824332e602423
+[    1.4s] [live] beacon decoded: host name='SANTI' TID=0xc16f RFU-session-id=0x4a30 tradeSpecies=16
+[    3.2s] [live] LDN join FAILED:
+ExceptionGroup with 1 underlying error(s):
+  [1] ConnectionError: Failed to obtain IP address after joining network (timeout)
+Traceback (most recent call last):
+  File "/home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade/venv/lib/python3.14/site-packages/ldn/util.py", line 15, in create_nursery
+    yield nursery
+  File "/home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade/venv/lib/python3.14/site-packages/ldn/util.py", line 27, in background_task
+    yield
+  File "/home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade/venv/lib/python3.14/site-packages/ldn/__init__.py", line 1309, in start
+    await self._initialize_network()
+  File "/home/ubuntu/Comunicacion_Pokemon/vendor/frlg-ldn-trade/venv/lib/python3.14/site-packages/ldn/__init__.py", line 1419, in _initialize_network
+    raise ConnectionError(
+        "Failed to obtain IP address after joining network (timeout)"
+    )
+ConnectionError: Failed to obtain IP address after joining network (timeout)
+
+[    3.2s] [live] retrying LDN join in 1.5s (attempt 2/3)...
+[    4.7s] [live] freed radio: brought wlp8s0 (phy0) down
+[    6.0s] [live] saw network comm_id=0x01006fa0233f8000 scene=22287 1/6 accept_policy=0
+[    6.0s] [live] beacon application_data (122 B): 005c160058000000000000000000000000000000000101000000080153616e746961676f0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000333255416029303534764837616b3a232323232348484c7824332e602423
+[    6.0s] [live] beacon RFU payload (after the 0x5C Pia header, 30 B): 333255416029303534764837616b3a232323232348484c7824332e602423
+[    6.0s] [live] beacon decoded: host name='SANTI' TID=0xc16f RFU-session-id=0x4a30 tradeSpecies=16
+[    6.6s] [live] joined ssid=SSID-CENSURADO us=169.254.98.2/MAC-PC-CENSURADA host=169.254.98.1/MAC-SWITCH-CENSURADA
+[    6.6s] [live] rx socket SO_RCVBUF = 8388608 bytes (raise net.core.rmem_max if lower than requested 8 MiB)
+[    6.6s] [live] LDN join succeeded on attempt 2/3.
+[    6.6s]   party slot 0: RATTATA (#19) nick='RATTATA' OT='EMU' PID=0aabebe0 lv=3 checksum=OK
+[    6.6s]   party slot 1: #1 (#1) nick='BULBASAUR' OT='EMU' PID=5886a31e lv=5 checksum=OK
+[    6.6s]   seat=RIGHT (Follower / mpId=1); trades=1, offered_slots=[1]
+[    6.6s] [live] emulator connect: will send 'C' with connect id 7bb1 (random nonzero); the host's 'A' (0x41) accept seats our slot - the value need not match anything on the host.
+[    6.6s] [live] joined LDN; awaiting the host's Pia connection handshake (Net 0x11 -> Session join -> confirm). NOT trading until the host confirms us.
+[    6.6s] [live] configured trades=1 (cancel-to-leave after the final trade)
+[    7.0s] [live] RX #1: 169.254.98.1 -> 169.254.98.255:12345 len=109 32ab9864
+[    7.1s] [sim] RX ok from 169.254.98.1: protos=[1] (1=Net 3=RTT 10=Reliable 13=Session)
+[    7.1s] [live] RX #2: 169.254.98.1 -> 169.254.98.255:12345 len=157 32ab9864
+[    7.1s] [live] RX #3: 169.254.98.1 -> 169.254.98.255:12345 len=61 32ab9864
+[    7.1s] [live] RX #4: 169.254.98.1 -> 169.254.98.2:12345 len=77 32ab9864
+[    7.1s] [sim] RX ok from 169.254.98.1: protos=[13] (1=Net 3=RTT 10=Reliable 13=Session)
+[    7.1s] host acked join (Session) -> FINALIZE
+[    7.1s] [sim] RX ok from 169.254.98.1: protos=[3] (1=Net 3=RTT 10=Reliable 13=Session)
+[    7.1s] host live (RTT/Reliable) -> CONNECTED
+[    7.1s] [sim] RX ok from 169.254.98.1: protos=[13] (1=Net 3=RTT 10=Reliable 13=Session)
+[    7.1s] [live] Pia connection ESTABLISHED - host confirmed us (conn=connected after 30f). Awaiting the emulator RFU connect/'A' + NI handshake + LinkPlayer exchange before sitting.
+[    7.2s] [live] RX #5: 169.254.98.1 -> 169.254.98.2:12345 len=77 32ab9864
+[    7.2s] [sim] RX ok from 169.254.98.1: protos=[10] (1=Net 3=RTT 10=Reliable 13=Session)
+[    7.2s] [live] RX #6: 169.254.98.1 -> 169.254.98.2:12345 len=77 32ab9864
+[    7.2s] [sim] RX ok from 169.254.98.1: protos=[10] (1=Net 3=RTT 10=Reliable 13=Session)
+[    7.3s] [live] RX #7: 169.254.98.1 -> 169.254.98.2:12345 len=61 32ab9864
+[    7.3s] [sim] RX ok from 169.254.98.1: protos=[10] (1=Net 3=RTT 10=Reliable 13=Session)
+[    7.3s] [sim] host ACCEPTED emulator connect ('A' 0x41): 57410600304a7bb10000 -> our slot is seated; RFU link up, starting the NI handshake
+[    7.3s] [live] RX #8: 169.254.98.1 -> 169.254.98.2:12345 len=77 32ab9864
+[    7.3s] [sim] RX ok from 169.254.98.1: protos=[10] (1=Net 3=RTT 10=Reliable 13=Session)
+[    7.4s] [live] RX #9: 169.254.98.1 -> 169.254.98.255:12345 len=61 32ab9864
+[    7.4s] [live] RX #10: 169.254.98.1 -> 169.254.98.2:12345 len=77 32ab9864
+[   13.3s] [sim] host NI join status = JOIN_GROUP_OK (5)
+[   14.6s] [sim] host entered UNI -> NI handshake complete, switching to UNI trade slots
+[   14.6s]   [trade] entry: host SEND_PLAYER_IDS playerCount=2 ids[0]=1 (our mpId=1)
+[   14.7s]   [trade] REQ type=0 size=200 -> send 200B
+[   18.1s]   [trade] host LinkPlayer: SANTI v0x4004
+[   18.1s] [live] RFU link ESTABLISHED (gReceivedRemoteLinkPlayers: both LinkPlayer blocks exchanged) - held keys + sit are now armed.
+[   21.6s]   [trade] warp#1: emitting post-LinkPlayer READY_EXIT_STANDBY count=0 (await host card)
+[   27.5s]   [trade] barrier: host 0x6600 count=0 -> STANDBY (reactive mirror)
+[   27.6s]   [trade] entry: host pulled BLOCK_REQ_SIZE_100 (trainer card)
+[   27.6s]   [trade] entry: -> P1_CARD_EXCHANGE
+[   27.6s]   [trade] REQ type=2 size=100 -> send 100B
+[   27.6s] [live] entry: host pulled our 100B trainer card (BLOCK_REQ_SIZE_100) - supplied; this is the pre-trade card exchange (Task_ExchangeCards).
+[   29.4s]   [trade] entry: received host trainer card (100B) -> recvBuffer[0]
+[   32.1s]   [trade] warp#2: emitting post-card READY_EXIT_STANDBY count=1 (await host seat)
+[   34.3s]   [trade] barrier: host advanced reactive round 0->1
+[   35.0s]   [trade] entry: -> P2_SEAT_BARRIER
+[   35.0s]   [trade] entry: host entered the trade room (first SEND_HELD_KEYS) -> emit EMPTY keepalive
+[   59.3s]   [trade] entry: host emitted READY (0x16) - host is seated; we may sit now
+[   59.3s] [live] host sat (READY 0x16) - sitting at the RIGHT seat (READY 0x16).
+[   59.3s] linkstate: sit() -> READY(0x16) at RIGHT seat (mpId 1)
+[   63.0s]   [trade] warp#3: post-seat READY_EXIT_STANDBY count=2 (sustained until host completes)
+[   63.1s]   [trade] barrier: host 0x6600 count=2 -> STANDBY (reactive mirror)
+[   63.1s]   [trade] warp#4: post-seat READY_EXIT_STANDBY count=3 (host reached count=2; sustained until host completes)
+[   64.0s]   [trade] barrier: host advanced reactive round 2->3
+[   64.6s]   [trade] entry: -> P3_WARP_QUIESCE_2
+[   64.6s]   [trade] entry: -> P4_TRADE_MENU
+[   64.6s]   [trade] REQ type=1 size=200 -> send 200B
+[   74.3s]   [trade] host party block #1/3
+[   82.6s]   [trade] REQ type=1 size=200 -> send 200B
+[   95.5s]   [trade] host party block #2/3
+[  111.1s]   [trade] REQ type=1 size=200 -> send 200B
+[  112.7s]   [trade] barrier: host stopped 0x6600 for >90f -> IDLE (final reactive round passed, local_count=4)
+[  115.5s]   [trade] host party block #3/3
+[  127.3s]   [trade] REQ type=3 size=220 -> send 220B
+[  130.2s]   [trade] host mail block (count=19) - consumed (cosmetic, not trade-affecting)
+[  150.8s]   [trade] REQ type=4 size=40 -> send 40B
+[  153.9s]   [trade] host giftRibbons block (count=4) - consumed (cosmetic, not trade-affecting)
+[  161.5s]   [trade] entry: -> P5_IN_TRADE
+[  161.5s]   [trade] -> READY_TO_TRADE cursor=1 (trade 1/1)
+[  161.5s] [live] entry: complete (P0..P5) - trade menu is live; entering the trade FSM.
+[  221.7s]   [trade] <- LINKCMD SET_MONS_TO_TRADE cursor=5
+[  221.7s]   [trade] confirm: BOTH_MONS_VALID -> INIT_BLOCK (immediate) [trade.c:1991-1996]
+[  226.0s]   [trade] <- LINKCMD INIT_BLOCK cursor=5
+[  226.0s]   [trade] <- LINKCMD START_TRADE cursor=0
+[  226.6s]   [trade] barrier: INITIATE standby 0x6600 (local_count=4)
+[  226.6s]   [trade] barrier (b): INITIATE menu->scene-seam standby [trade.c:2159-2166]
+[  227.4s]   [trade] barrier: child-initiated standby round complete (host echoed count=4) -> local_count=5, rounds=4
+[  258.3s]   [trade] <- LINKCMD READY_FINISH_TRADE cursor=0
+[  260.2s]   [trade] -> READY_FINISH_TRADE
+[  269.3s]   [trade] <- LINKCMD CONFIRM_FINISH_TRADE cursor=0
+[  269.3s]   [trade] RECEIVED (trade 1/1): #10 (#10) nick='CATERPIE' OT='SANTI' PID=d5e9cf79 lv=3 checksum=OK
+[  269.3s]   [trade] all 1 trade(s) committed -> entering cancel-to-leave
+[  269.3s] 
+Received: #10 (#10) nick='CATERPIE' OT='SANTI' PID=d5e9cf79 lv=3 checksum=OK
+Saved -> /home/ubuntu/Comunicacion_Pokemon/pk3/recibido.pk3 (pk3, 100B)
+[  269.3s] [live] trade committed -> saved 1 received mon(s) to disk now (robust to an abrupt exit)
+[  269.8s]   [trade] barrier: INITIATE standby 0x6600 (local_count=5)
+[  271.0s]   [trade] barrier: child-initiated standby round complete (host echoed count=5) -> local_count=6, rounds=5
+[  271.0s]   [trade] barrier: INITIATE standby 0x6600 (local_count=6)
+[  274.9s]   [trade] barrier: child-initiated standby round complete (host echoed count=6) -> local_count=7, rounds=6
+[  276.2s]   [trade] barrier: INITIATE standby 0x6600 (local_count=7)
+[  277.2s]   [trade] barrier: child-initiated standby round complete (host echoed count=7) -> local_count=8, rounds=7
+[  278.2s]   [trade] barrier: INITIATE standby 0x6600 (local_count=8)
+[  278.5s]   [trade] barrier: child-initiated standby round complete (host echoed count=8) -> local_count=9, rounds=8
+[  278.5s]   [trade] barrier: INITIATE standby 0x6600 (local_count=9)
+[  279.9s]   [trade] barrier: child-initiated standby round complete (host echoed count=9) -> local_count=10, rounds=9
+[  280.5s]   [trade] barrier: INITIATE standby 0x6600 (local_count=10)
+[  280.9s]   [trade] barrier: child-initiated standby round complete (host echoed count=10) -> local_count=11, rounds=10
+[  281.1s]   [trade] save-chain: host re-exchanging (REQ/block) -> ending chain, resume trade
+[  281.1s]   [trade] REQ type=1 size=200 -> send 200B
+[  283.1s]   [trade] host party block #1/3
+[  306.1s]   [trade] REQ type=1 size=200 -> send 200B
+[  307.1s]   [trade] host party block #2/3
+[  320.8s]   [trade] REQ type=1 size=200 -> send 200B
+[  321.8s]   [trade] host party block #3/3
+[  333.7s]   [trade] REQ type=3 size=220 -> send 220B
+[  334.7s]   [trade] host mail block (count=19) - consumed (cosmetic, not trade-affecting)
+[  351.7s]   [trade] REQ type=4 size=40 -> send 40B
+[  351.9s]   [trade] host giftRibbons block (count=4) - consumed (cosmetic, not trade-affecting)
+[  359.9s]   [trade] -> REQUEST_CANCEL (leaving: CANCEL selected) [trade.c:2049]
+[  364.9s]   [trade] REQUEST_CANCEL sent -> awaiting host *_CANCEL echo
+[  371.2s]   [trade] <- LINKCMD REQUEST_CANCEL cursor=0
+[  371.3s]   [trade] <- LINKCMD BOTH_CANCEL_TRADE cursor=0
+[  371.3s]   [trade] <- BOTH_CANCEL_TRADE: graceful cancel acknowledged
+[  371.3s]   [trade] barrier: INITIATE standby 0x6600 (local_count=11)
+[  371.3s]   [trade] barrier (d): INITIATE cancel-exit standby [trade.c:2117-2132]
+[  371.6s]   [trade] barrier: child-initiated standby round complete (host echoed count=11) -> local_count=12, rounds=11
+[  372.0s]   [trade] barrier: INITIATE standby 0x6600 (local_count=12)
+[  372.0s]   [trade] barrier (e): INITIATE return-to-field sync standby [field_fadetransition.c Task_ReturnToFieldRecordMixing case 0 -> SetLinkStandbyCallback; host black-screens at case 1 until we complete it]
+[  373.7s]   [trade] barrier: child-initiated standby round complete (host echoed count=12) -> local_count=13, rounds=12
+[  373.9s]   [trade] barrier (e): return-to-field standby passed -> done (post-cancel overworld; held-keys re-armed, awaiting host READY_CLOSE_LINK)
+[  373.9s] [live] trade(s) complete - returning to the overworld; keeping the link ALIVE (held-keys keepalive + barrier) and letting the HOST lead the walk-out. Will answer the host's EXIT_ROOM with ours, then mirror its READY_CLOSE_LINK / 'D'.
+[  389.0s]   [trade] host emitted EXIT_ROOM (0x17) - it is walking out and waiting for ALL players to exit; respond with our EXIT_ROOM [overworld.c:2962-2981]
+[  389.0s] [live] host is walking out (EXIT_ROOM 0x17, 'escorted out... please wait') - responding with OUR EXIT_ROOM so both are EXITING_ROOM -> host closes the link.
+[  389.0s] linkstate: exit() -> EXIT_ROOM(0x17); keepalive until the host also exits the room
+[  391.5s]   [trade] barrier: host 0x5F00 count=13 -> CLOSE (mirror reply)
+[  391.5s] [live] host issued READY_CLOSE_LINK (0x5F00) - answering, then disconnecting.
+[  393.5s] 
+Received: #10 (#10) nick='CATERPIE' OT='SANTI' PID=d5e9cf79 lv=3 checksum=OK
+Saved -> /home/ubuntu/Comunicacion_Pokemon/pk3/recibido.pk3 (pk3, 100B)

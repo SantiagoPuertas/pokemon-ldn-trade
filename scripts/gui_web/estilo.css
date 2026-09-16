@@ -1,0 +1,181 @@
+/* Estilo de la GUI. Oscuro por defecto: el intercambio se hace de noche, en un
+   Ubuntu live, con la Switch al lado. Sin fuentes ni iconos externos, porque
+   durante el intercambio no hay Internet. */
+
+:root {
+  --fondo: #12141a;
+  --panel: #1a1d26;
+  --panel2: #212632;
+  --borde: #2d3342;
+  --texto: #e6e9f0;
+  --suave: #9aa3b8;
+  --rojo: #e3350d;
+  --rojo-claro: #ff5a33;
+  --verde: #35c46a;
+  --ambar: #f0b429;
+  --azul: #4f9dff;
+  --radio: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font: 15px/1.5 system-ui, "Segoe UI", Ubuntu, sans-serif;
+}
+
+/* ---------- cabecera y pestanas ---------- */
+header {
+  background: linear-gradient(180deg, #1c2029, #14171f);
+  border-bottom: 1px solid var(--borde);
+  padding: 14px 22px 0;
+  position: sticky; top: 0; z-index: 20;
+}
+.titulo { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.titulo h1 { font-size: 19px; margin: 0; letter-spacing: .3px; }
+.titulo h1 b { color: var(--rojo-claro); }
+.titulo span { color: var(--suave); font-size: 13px; }
+
+.pastillas { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 0; }
+.pastilla {
+  font-size: 12px; padding: 3px 10px; border-radius: 999px;
+  background: var(--panel2); border: 1px solid var(--borde); color: var(--suave);
+  white-space: nowrap;
+}
+.pastilla.ok    { color: var(--verde);  border-color: #2c5c3f; }
+.pastilla.mal   { color: var(--rojo-claro); border-color: #6b2a1c; }
+.pastilla.aviso { color: var(--ambar); border-color: #6a5320; }
+
+nav { display: flex; gap: 4px; margin-top: 12px; }
+nav button {
+  background: none; border: 0; border-bottom: 2px solid transparent;
+  color: var(--suave); font: inherit; padding: 9px 16px; cursor: pointer;
+}
+nav button:hover { color: var(--texto); }
+nav button.activa { color: var(--texto); border-bottom-color: var(--rojo); }
+
+main { padding: 22px; max-width: 1400px; margin: 0 auto; }
+section[hidden] { display: none; }
+
+/* ---------- rejillas y tarjetas ---------- */
+.dos-columnas { display: grid; grid-template-columns: minmax(0,1.35fr) minmax(320px,.85fr); gap: 20px; align-items: start; }
+@media (max-width: 980px) { .dos-columnas { grid-template-columns: 1fr; } }
+
+.tarjeta {
+  background: var(--panel); border: 1px solid var(--borde);
+  border-radius: var(--radio); padding: 16px 18px; margin-bottom: 16px;
+}
+.tarjeta > h2 {
+  margin: 0 0 14px; font-size: 13px; text-transform: uppercase;
+  letter-spacing: .8px; color: var(--suave); font-weight: 600;
+}
+.pegajosa { position: sticky; top: 118px; }
+
+/* ---------- formularios ---------- */
+.campos { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px 14px; }
+label { display: block; font-size: 12px; color: var(--suave); margin-bottom: 4px; }
+input, select, textarea {
+  width: 100%; background: var(--panel2); color: var(--texto);
+  border: 1px solid var(--borde); border-radius: 7px; padding: 7px 9px;
+  font: inherit;
+}
+input:focus, select:focus { outline: 2px solid var(--azul); outline-offset: -1px; }
+input[type=checkbox] { width: auto; }
+.linea-check { display: flex; align-items: center; gap: 8px; margin-top: 20px; }
+.linea-check label { margin: 0; font-size: 13px; color: var(--texto); }
+
+.seis { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+@media (max-width: 620px) { .seis { grid-template-columns: repeat(3, 1fr); } }
+.seis label { text-align: center; font-size: 11px; }
+.seis input { text-align: center; padding: 6px 2px; }
+
+.fila-botones { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; align-items: center; }
+
+button.accion {
+  background: var(--panel2); color: var(--texto); border: 1px solid var(--borde);
+  border-radius: 7px; padding: 7px 13px; font: inherit; cursor: pointer;
+}
+button.accion:hover { border-color: var(--azul); }
+button.accion:disabled { opacity: .45; cursor: not-allowed; }
+button.principal { background: var(--rojo); border-color: var(--rojo); font-weight: 600; }
+button.principal:hover { background: var(--rojo-claro); border-color: var(--rojo-claro); }
+button.peligro { border-color: #6b2a1c; color: var(--rojo-claro); }
+button.pequena { padding: 4px 9px; font-size: 12px; }
+
+.ayuda { color: var(--suave); font-size: 12px; margin: 8px 0 0; }
+.ayuda code { background: var(--panel2); padding: 1px 5px; border-radius: 4px; }
+
+/* ---------- vista previa ---------- */
+.cabecera-previa { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.cabecera-previa .mote { font-size: 20px; font-weight: 600; }
+.etiqueta {
+  font-size: 11px; padding: 2px 8px; border-radius: 999px;
+  border: 1px solid var(--borde); color: var(--suave);
+}
+.etiqueta.brillo { color: #1b1b1b; background: linear-gradient(90deg, #ffd54a, #ffb03a); border-color: #ffd54a; font-weight: 700; }
+.etiqueta.fateful { color: var(--azul); border-color: #2b4f7e; }
+
+.barras { display: grid; gap: 6px; margin-top: 14px; }
+.barra { display: grid; grid-template-columns: 74px 44px 1fr; align-items: center; gap: 8px; font-size: 12px; }
+.barra span:first-child { color: var(--suave); }
+.barra b { text-align: right; font-variant-numeric: tabular-nums; }
+.barra i { display: block; height: 8px; border-radius: 4px; background: var(--panel2); overflow: hidden; }
+.barra i em { display: block; height: 100%; background: linear-gradient(90deg, var(--rojo), var(--ambar)); }
+
+dl.datos { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 14px 0 0; font-size: 13px; }
+dl.datos dt { color: var(--suave); }
+dl.datos dd { margin: 0; word-break: break-word; }
+
+.mensaje { border-radius: 7px; padding: 8px 11px; font-size: 13px; margin-top: 10px; }
+.mensaje.fallo { background: #2c1512; border: 1px solid #6b2a1c; color: #ffb1a0; }
+.mensaje.aviso { background: #2a2313; border: 1px solid #6a5320; color: #ffdf9e; }
+.mensaje.bien  { background: #12281c; border: 1px solid #2c5c3f; color: #a9edc4; }
+
+/* ---------- caja ---------- */
+.rejilla-caja { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 14px; }
+.ficha { background: var(--panel); border: 1px solid var(--borde); border-radius: var(--radio); padding: 13px 15px; }
+.ficha.invalido { border-color: #6b2a1c; }
+.ficha.elegido-enviar  { border-color: var(--verde); box-shadow: 0 0 0 1px var(--verde) inset; }
+.ficha.elegido-relleno { border-color: var(--azul);  box-shadow: 0 0 0 1px var(--azul) inset; }
+.ficha h3 { margin: 0 0 2px; font-size: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ficha .ruta { color: var(--suave); font-size: 11px; word-break: break-all; }
+.ficha ul { margin: 9px 0 0; padding: 0; list-style: none; font-size: 12.5px; color: var(--suave); }
+.ficha ul b { color: var(--texto); font-weight: 500; }
+
+/* ---------- registro del intercambio ---------- */
+.consola {
+  background: #0c0e13; border: 1px solid var(--borde); border-radius: 7px;
+  padding: 10px 12px; height: 460px; overflow: auto;
+  font: 12.5px/1.45 ui-monospace, "DejaVu Sans Mono", monospace;
+  white-space: pre-wrap; word-break: break-word;
+}
+.consola .l-ok  { color: #8ce5a8; }
+.consola .l-mal { color: #ff9b86; }
+.consola .l-sim { color: var(--suave); }
+
+.checklist { list-style: none; padding: 0; margin: 0; font-size: 13.5px; }
+.checklist li { padding: 4px 0; display: flex; gap: 9px; align-items: baseline; }
+.checklist .marca { width: 16px; text-align: center; }
+.checklist .si { color: var(--verde); }
+.checklist .no { color: var(--rojo-claro); }
+.checklist .quiza { color: var(--ambar); }
+
+.pasos { counter-reset: paso; list-style: none; padding: 0; margin: 0; font-size: 13.5px; color: var(--suave); }
+.pasos li { counter-increment: paso; padding: 5px 0 5px 30px; position: relative; }
+.pasos li::before {
+  content: counter(paso); position: absolute; left: 0; top: 4px;
+  width: 20px; height: 20px; border-radius: 50%; background: var(--panel2);
+  border: 1px solid var(--borde); font-size: 11px; text-align: center; line-height: 19px;
+}
+.pasos b { color: var(--texto); }
+
+/* ---------- avisos flotantes ---------- */
+#avisos { position: fixed; right: 18px; bottom: 18px; display: grid; gap: 8px; z-index: 50; max-width: 380px; }
+.aviso-flotante {
+  background: var(--panel2); border: 1px solid var(--borde); border-left: 3px solid var(--azul);
+  border-radius: 7px; padding: 10px 13px; font-size: 13px; box-shadow: 0 8px 24px #0008;
+}
+.aviso-flotante.bien  { border-left-color: var(--verde); }
+.aviso-flotante.fallo { border-left-color: var(--rojo); }

@@ -1,0 +1,64 @@
+
+[1m=== Herramientas ===[0m
+  [32m[ OK  ][0m iw disponible
+  [32m[ OK  ][0m lspci disponible
+
+[1m=== Sistema ===[0m
+  [2mUbuntu 26.04.1 LTS[0m
+  [2mKernel: 7.0.0-30-generic[0m
+  [32m[ OK  ][0m Python 3.14  (frlg-ldn-trade pide 3.12+)
+
+[1m=== Tarjetas de red detectadas ===[0m
+  08:00.0 Network controller: Realtek Semiconductor Co., Ltd. RTL8852BE PCIe 802.11ax Wireless Network Controller
+  	Subsystem: Lenovo Device 4853
+  	Kernel driver in use: rtw89_8852be
+  	Kernel modules: rtw89_8852be
+  [2m[0m
+  [2mAdaptadores USB:[0m
+  Bus 001 Device 004: ID 0bda:4853 Realtek Semiconductor Corp. Bluetooth Radio
+
+[1m=== rfkill ===[0m
+  [32m[ OK  ][0m ninguna radio bloqueada
+
+[1m=== Dominio regulatorio ===[0m
+  [2mcountry ES: DFS-ETSI[0m
+  [2mLDN usa 2.4 GHz (canales 1, 6 y 11).[0m
+
+[1m=== Radio phy0 ===[0m
+  [2mInterfaz: wlp8s0    driver: rtw89_8852be[0m
+  [2m[0m
+  [2mModos soportados: managed AP AP/VLAN monitor P2P-client P2P-GO[0m
+  [32m[ OK  ][0m modo monitor soportado
+  [32m[ OK  ][0m modo AP soportado
+  [2m[0m
+  [2mCombinaciones validas de interfaces:[0m
+    		 * #{ managed } <= 1, #{ AP, P2P-client, P2P-GO } <= 1,
+    		   total <= 2, #channels <= 1
+    		 * #{ managed } <= 1, #{ P2P-client, P2P-GO } <= 1,
+    		   total <= 2, #channels <= 2
+  [32m[ OK  ][0m monitor es 'software interface mode': se puede anadir siempre
+  [2m[0m
+  [2mCanales 2.4 GHz relevantes para LDN:[0m
+    * 2412.0 MHz [1] (20.0 dBm)
+    * 2437.0 MHz [6] (20.0 dBm)
+    * 2462.0 MHz [11] (20.0 dBm)
+  [32m[ OK  ][0m canales 1/6/11 utilizables, sin restriccion 'no IR'
+  [2m[0m
+  [33m[ ??  ][0m driver rtw89 (RTL8852BE): NO esta en la lista de tarjetas
+  [2m     probadas por frlg-ldn-trade. Que declare 'monitor' no[0m
+  [2m     garantiza que soporte inyeccion de frames, que es lo que[0m
+  [2m     LDN necesita de verdad.[0m
+  [2m     Fallback conocido y fiable: ALFA AWUS036ACHM (mt76x0u).[0m
+
+[1m=== NetworkManager ===[0m
+  [33m[ ??  ][0m NetworkManager ACTIVO - hay que pararlo antes de usar LDN:
+  [2m     sudo systemctl stop NetworkManager     (te quedaras sin Wi-Fi)[0m
+  [2m     sudo systemctl start NetworkManager    (para recuperarla)[0m
+
+[1m=== Veredicto ===[0m
+  [33mPOSIBLEMENTE VIABLE: 1 aviso(s), ningun bloqueo.[0m
+  Merece la pena intentar la conexion real con la Switch.
+
+  [2mEsto es solo un filtro previo. La prueba de verdad es que aparezca
+  "EMU" en la pantalla de la Switch.[0m
+
